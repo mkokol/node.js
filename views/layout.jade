@@ -1,7 +1,10 @@
-doctype 5
+!!! 5
 html
-  head
-    title= title
+  block head
     link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+    script(src='/javascripts/vendor/jquery.min.js')
+    script(src='/javascripts/vendor/underscore-min.js')
+    script(src='/javascripts/vendor/backbone-min.js')
+    title test single pagge app
   body
     block content
