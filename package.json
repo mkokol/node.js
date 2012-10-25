@@ -5,9 +5,6 @@
   "scripts": {
     "start": "node app"
   },
-  "directories": {
-    "lib": "./lib"
-  },
   "dependencies": {
     "express": "latest",
     "jade": "latest",
