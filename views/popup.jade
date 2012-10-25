@@ -6,13 +6,16 @@ block append head
             // Focuses on first input textbox after it loads the window.
             $('[data-toggle="modal"]').click(function(e) {
                 e.preventDefault();
-                var url = $(this).attr('href');
+                var url = "/" + $(this).attr('href');
                 if (url.indexOf('#') == 0) {
                     $(url).modal('open');
                 } else {
                     $.get(url, function(data) {
-                        $('<div class="modal hide fade">' + data + '</div>').modal();
-                    }).success(function() { $('input:text:visible:first').focus(); });
+                        $("body").append(data);
+                    }).success(function() {
+                        $("#modal-wnd").modal();
+                        $('input:text:visible:first').focus();
+                    });
                 }
             });
         });
@@ -23,7 +26,6 @@ block content
         p data
         p data
         p data
-        p data
 
         div
-            a#test-modal.btn(href="/popupwnd", type="button", data-toggle="modal") Popup
+            a#test-modal.btn(href="popupwnd", type="button", data-toggle="modal") Popup
