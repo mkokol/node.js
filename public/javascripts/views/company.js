@@ -1,7 +1,8 @@
-var ContactView = Backbone.View.extend({
-	template: '../../templates/contact.html',
-	initialize: function() {
-		this.render(function(html){ $('body').append(html); });		
+var CompanyView = Backbone.View.extend({
+	tagName: 'tr',
+	template : '../../templates/company-row.html',
+	initialize: function () {
+		this.render(function(html){ $('#companies').append(html); });
 	},
 	render: function(callback) {
 		var _this = this;

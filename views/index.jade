@@ -2,17 +2,21 @@ extends layout
 block append head
   script(src="/javascripts/models/contact.js")
   script(src="/javascripts/views/contact.js")
+  script(src="/javascripts/models/company.js")
+  script(src="/javascripts/views/company.js")
+  script(src="/javascripts/utils.js")
   script(src="/javascripts/app.js")
-  script(id="contactTemplate", type="text/template")
-    div
-      p data from model with default values
-      ul
-        li <b>name:</b> <%= name %>
-        li <b>position:</b> <%= position %>
-        li <b>phone number:</b> <%= phoneNumber %>
-
-    
+   
 block content
   body
     h1 test Contact View
-    div
+    table#companies.table.table-striped.table-bordered.table-condensed
+      thead
+        tr
+          th name
+          th street
+          th number
+          th city
+          th zipcode
+          th website
+          th phone
