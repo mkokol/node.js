@@ -1,8 +1,7 @@
 var CompanyView = Backbone.View.extend({
 	tagName: 'tr',
-	template : '../../templates/company-row.html',
+	template : '../../tmpl/company-row.html',
 	initialize: function () {
-		this.render(function(html){ $('#companies').append(html); });
 	},
 	render: function(callback) {
 		var _this = this;
@@ -12,5 +11,8 @@ var CompanyView = Backbone.View.extend({
 				callback(_this.el);
 			}
 		});
+	},
+	events: {
+
 	}
 });
