@@ -8,9 +8,8 @@ console.log(dbManager.one);
 
 exports.index = function(req, res){
 
-   // dbManager.createConnection();
+   dbManager.createConnection();
 
-    console.log(dbManager);
 
 //    var Schema = mongoose.Schema;
 //
