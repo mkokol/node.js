@@ -1,13 +1,12 @@
-
 /**
  * Module dependencies.
  */
 
 var express = require('express')
-  , routes = require('./routes')
-  , user = require('./routes/user')
   , http = require('http')
-  , path = require('path');
+  , path = require('path')
+  , routes = require('./routes')
+  , user = require('./routes/user');
 
 var app = express();
 
