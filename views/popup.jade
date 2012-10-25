@@ -1,2 +1,8 @@
+extends layout
+block append head
 block content
-p data from model with default values
+    body
+        h1 test Contact View
+            p data from model with default values
+            div
+                a#test-modal.btn(href="/popupwnd", type="button", data-toggle="modal", data-target="#modal") Add Image

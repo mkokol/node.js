@@ -6,6 +6,8 @@ var express = require('express')
   , http = require('http')
   , path = require('path')
   , routes = require('./routes')
+  , popup = require('./routes/popup')
+  , popupwnd = require('./routes/popupwnd')
   , user = require('./routes/user');
 
 var app = express();
@@ -27,7 +29,8 @@ app.configure('development', function(){
 });
 
 app.get('/', routes.index);
-app.get('/popup', routes.popup);
+app.get('/popupwnd', popupwnd.popupwnd);
+app.get('/popup', popup.popup);
 app.get('/users', user.list);
 
 
