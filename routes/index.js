@@ -23,16 +23,16 @@ exports.index = function(req, res){
 //        }
 //    });
 
-    dbManager.model.Company.find().execFind(function (arr, data) {
-        console.log(data[0]);
-        data[0].contact = new dbManager.model.Contact(
-            {
-                "name": "test name"
-                , "position": "test position"
-                , "phone_number": 54321
-            }
-        );
-    });
+//    dbManager.model.Company.find().execFind(function (arr, data) {
+//        data[1].contact.push(
+//            {
+//                "name": "test name"
+//                , "position": "test position"
+//                , "phone_number": 54321
+//            }
+//        );
+//        data[1].save();
+//    });
 
     res.render('index', { title: 'World' });
 };
