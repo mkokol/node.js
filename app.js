@@ -6,9 +6,11 @@ var express = require('express')
   , http = require('http')
   , path = require('path')
   , routes = require('./routes')
+
+  , company = require('./routes/company')
+
   , popup = require('./routes/popup')
-  , popupwnd = require('./routes/popupwnd')
-  , user = require('./routes/user');
+  , popupwnd = require('./routes/popupwnd');
 
 var app = express();
 
@@ -31,7 +33,11 @@ app.configure('development', function(){
 app.get('/', routes.index);
 app.get('/popupwnd', popupwnd.popupwnd);
 app.get('/popup', popup.popup);
-app.get('/users', user.list);
+
+app.get('/company', company.get);
+app.put('/company', company.put);
+app.post('/company', company.post);
+app.delete('/company', company.delete);
 
 
 http.createServer(app).listen(app.get('port'), function(){

@@ -4,7 +4,8 @@
  */
 
 var config = require('../config.js')
-  , mongoose = require("mongoose");
+  , mongoose = require("mongoose")
+  , pagination = require('mongoose-pagination');
 
 function DbManager(){
     var db;
