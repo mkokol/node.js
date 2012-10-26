@@ -8,6 +8,7 @@ var express = require('express')
   , routes = require('./routes')
 
   , company = require('./routes/company')
+  , contact = require('./routes/contact')
 
   , popup = require('./routes/popup')
   , popupwnd = require('./routes/popupwnd');
@@ -35,10 +36,12 @@ app.get('/popupwnd', popupwnd.popupwnd);
 app.get('/popup', popup.popup);
 
 app.get('/company', company.get);
-app.put('/company', company.put);
 app.post('/company', company.post);
+app.put('/company', company.put);
 app.delete('/company', company.delete);
 
+app.post('/contact', contact.post);
+app.put('/contact', contact.put);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));

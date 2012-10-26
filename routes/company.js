@@ -1,4 +1,3 @@
-
 /*
  * Company controller.
  */
@@ -17,6 +16,30 @@ exports.get = function(req, res){
         .paginate(page, dbManager.rowsPerPage, function(err, records, total) {
             res.send({ status: 'success', 'total': total, 'records': records });
         });;
+};
+
+/**
+ * add new company to mongoDb
+ *
+ * @param req
+ * @param res
+ */
+exports.post = function(req, res){
+    var companyModel = new dbManager.model.Company({
+        name: req.param("name", null)
+        , street: req.param("street", null)
+        , street_number: req.param("streetNumber", null)
+        , city: req.param("city", null)
+        , zip_code: req.param("zipCode", null)
+        , url: req.param("url", null)
+    });
+    companyModel.save(function(err, companydData){
+        if(err){
+            res.send({ status: 'error'});
+        }else{
+            res.send({ status: 'success', company: companydData });
+        }
+    });
 };
 
 /**
@@ -44,30 +67,6 @@ exports.put = function(req, res){
             });
         });
     }
-};
-
-/**
- * add new company to mongoDb
- *
- * @param req
- * @param res
- */
-exports.post = function(req, res){
-    var companyModel = new dbManager.model.Company({
-        name: req.param("name", null)
-        , street: req.param("street", null)
-        , street_number: req.param("streetNumber", null)
-        , city: req.param("city", null)
-        , zip_code: req.param("zipCode", null)
-        , url: req.param("url", null)
-    });
-    companyModel.save(function(err, companydData){
-        if(err){
-            res.send({ status: 'error'});
-        }else{
-            res.send({ status: 'success', company: companydData });
-        }
-    });
 };
 
 /**
