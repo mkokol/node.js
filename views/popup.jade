@@ -13,8 +13,13 @@ block append head
                     $.get(url, function(data) {
                         $("body").append(data);
                     }).success(function() {
-                        $("#modal-wnd").modal();
-                        $('input:text:visible:first').focus();
+                        $("#modal-wnd").modal("show");
+                        $("#modal-wnd").css({'margin-top': - Math.round($("#modal-wnd").height()/2)});
+                        $(".close, .modal-backdrop").click(function(){
+                            e.preventDefault();
+                            $('#modal-wnd').modal("hide");
+                            $("#modal-wnd").remove();
+                        });
                     });
                 }
             });
