@@ -17,9 +17,9 @@ exports.post = function(req, res){
         dbManager.model.Company.findOne({_id: id}, function(err, company){
             company.contacts.push(
                 {
-                    "name": "test name"
-                    , "position": "test position"
-                    , "phone_number": 54321
+                    "name": req.param("name", null)
+                    , "position": req.param("position", null)
+                    , "phone_number": req.param("phone_number", null)
                 }
             );
             company.save(function(err, companydData){
