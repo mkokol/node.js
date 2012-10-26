@@ -2,5 +2,12 @@
 .hidden{display: none}
 
 
+/* adjusts/resets */
+#modal-wnd h4,
+#modal-wnd form{
+	margin: 0
+}
+
 
 #companies{width: 980px}
+#modal-wnd{width: 250px}

@@ -1,17 +1,26 @@
 $(function() {
-    $.ajax({
-        url: "/company"
-        , type: "GET"
-        , success: function(data){
-            if(data.status == "success"){
-                console.log(data.records);
-                var companiesList = new Companies(data.records);
-                var companiesListView = new CompaniesView({
-                    collection: companiesList,
-                    el: $('#companies')
-                });
-                companiesListView.render();
-            }
+    var App = Backbone.View.extend({
+        initialize: function() {
+            this.initCompanies();
+        },
+        events: {
+
+        },
+        initCompanies: function() {
+            var companies = new Companies();
+            companies.fetch({
+                success: function(collection, response) {
+                    var companiesView = new CompaniesView({
+                        collection: companies
+                    });
+                    companiesView.render();
+                    console.log(collection, response, 'success');
+                },
+                error: function(collection, response) {
+                    console.log(collection, response, 'error');
+                }
+            });            
         }
     });
+    var app = new App();
 });

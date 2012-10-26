@@ -1,8 +1,13 @@
-<h3>Create New Company</h3>
+<h4 class="modal-header">Create New Company</h4>
 <div class="modal-body">
 	<form id="create-new-company">
 		<% for(var name in obj) { %> 
 		<input type="text" name="<%= name %>" placeholder="<%= obj[name] %>"/>
 		<% } %>
+		<button type="submit" class="btn btn-small btn-success">
+			<i class="icon-ok icon-white"></i>
+			Create New Company
+		</button>
+		<a class="btn btn-small btn-primary closeModal">Cancel</a>
 	</form>
 </div>

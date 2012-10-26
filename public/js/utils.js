@@ -50,12 +50,12 @@ $(document).ready(function() {
 
     modal.modal("show");
     newCompanyView.drawForm(function(renderedForm) {
-      modal.append(renderedForm);
+      modal.html(renderedForm);
     });
 
   });
 
-  $(".close, .modal-backdrop").click(function() {
+  $(".closeModal").click(function() {
     $('#modal-wnd').modal("hide");
   });
 
