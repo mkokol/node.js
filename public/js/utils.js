@@ -38,3 +38,27 @@ var fetchTemplate =  function(path, done) {
   // Ensure a normalized return value (Promise)
   return def.promise();
 }
+
+$(document).ready(function() {
+    // Support for AJAX loaded modal window.
+    // Focuses on first input textbox after it loads the window.
+    $('[data-toggle="modal"]').click(function(e) {
+        e.preventDefault();
+        var url = "/" + $(this).attr('href');
+        if (url.indexOf('#') == 0) {
+            $(url).modal('open');
+        } else {
+            $.get(url, function(data) {
+                $("body").append(data);
+            }).success(function() {
+                $("#modal-wnd").modal("show");
+                $("#modal-wnd").css({'margin-top': - Math.round($("#modal-wnd").height()/2)});
+                $(".close, .modal-backdrop").click(function(){
+                    e.preventDefault();
+                    $('#modal-wnd').modal("hide");
+                    $("#modal-wnd").remove();
+                });
+            });
+        }
+    });
+});

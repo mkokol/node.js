@@ -15,7 +15,7 @@ exports.get = function(req, res){
     var page = req.param("page", 1);
     dbManager.model.Company.find()
         .paginate(page, dbManager.rowsPerPage, function(err, records, total) {
-            res.send({ status: 'saccess', 'total': total, 'records': records });
+            res.send({ status: 'success', 'total': total, 'records': records });
         });;
 };
 
@@ -38,7 +38,7 @@ exports.put = function(req, res){
         if(err){
             res.send({ status: 'error'});
         }else{
-            res.send({ status: 'saccess', company: companydData });
+            res.send({ status: 'success', company: companydData });
         }
     });
 };
@@ -57,7 +57,7 @@ exports.post = function(req, res){
                 if(err){
                     res.send({ status: 'error'});
                 }else{
-                    res.send({ status: 'saccess'});
+                    res.send({ status: 'success'});
                 }
             });
         });
@@ -73,7 +73,7 @@ exports.delete = function(req, res){
                 if(err){
                     res.send({ status: 'error', "id": id });
                 }else{
-                    res.send({ status: 'saccess', "id": id });
+                    res.send({ status: 'success', "id": id });
                 }
             });
         });
