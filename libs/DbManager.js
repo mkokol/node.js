@@ -3,13 +3,15 @@
  *
  */
 
+require('mongoose-pagination');
+
 var config = require('../config.js')
-  , mongoose = require("mongoose")
-  , pagination = require('mongoose-pagination');
+  , mongoose = require("mongoose");
 
 function DbManager(){
     var db;
     var model = {};
+    var rowsPerPage = config.paging.count;
 
     function createConnection(){
         db = mongoose.createConnection(config.db.host, config.db.name);
@@ -40,7 +42,8 @@ function DbManager(){
     initDbSchema();
 
     return {
-        "model": model
+        "rowsPerPage" : rowsPerPage
+        , "model": model
     };
 }
 
