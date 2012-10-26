@@ -1,0 +1,8 @@
+<h3>Create New Company</h3>
+<div class="modal-body">
+	<form id="create-new-company">
+		<% for(var name in obj) { %> 
+		<input type="text" name="<%= name %>" placeholder="<%= obj[name] %>"/>
+		<% } %>
+	</form>
+</div>

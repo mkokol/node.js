@@ -13,7 +13,10 @@ block content
   body
     div.container
       h1 test Contact View
-      a#test-modal.btn(href="popupwnd", type="button", data-toggle="modal") Popup
+      a#create-new-company-btn.btn.btn-small(type="button", data-toggle="modal")
+        i.icon-plus-sign
+        |Create New Company
+
       table#companies.table.table-striped.table-bordered.table-condensed
         thead
           tr
@@ -24,3 +27,7 @@ block content
             th zipcode
             th website
             th options
+
+    div#modal-wnd.modal.hade.hidden
+      div.modal-header
+          a.close(data-dismiss="modal") &times;

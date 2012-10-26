@@ -1,3 +1,6 @@
-#companies{
-	width: 980px;
-}
+/* presentative classes*/
+.hidden{display: none}
+
+
+
+#companies{width: 980px}
