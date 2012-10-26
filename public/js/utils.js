@@ -38,3 +38,26 @@ var fetchTemplate = function(path, done) {
     // Ensure a normalized return value (Promise)
     return def.promise();
   }
+
+  var ModalWindow = Backbone.View.extend({
+    className: 'modal',
+    events: {
+      'click .closeModal' : 'close',
+      'submit form' : 'submitForm'
+    },
+    render: function(){
+      return this.$el
+    },
+    appendToDom: function(){
+      $('body').append(this.$el);
+    },
+    close: function(){
+      this.$el.modal('hide');
+    },
+    destroy: function(){
+      this.$el.remove();
+    },
+    submitForm: function(e){
+      e.preventDefault();      
+    }
+  });

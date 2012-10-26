@@ -11,6 +11,7 @@ var CompaniesView = Backbone.View.extend({
 		var companyView = new CompanyView({
 			model: company
 		});
+		console.log(company.toJSON());
 		companyView.render(function(companyEl) {
 			_this.$el.append(companyEl);
 		});		

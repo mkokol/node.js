@@ -15,27 +15,19 @@ $(function() {
             companies.fetch();
         },
         showCreateCompanyModal: function() {
-            var modal = $("#modal-wnd"),
+            var modal = new ModalWindow({
+                id: 'modal-wnd'
+            }),
                 newCompany = new Company(),
                 newCompanyView = new CompanyView({
                     model: newCompany
                 });
 
             newCompanyView.drawForm(function(renderedForm) {
-                modal.html(renderedForm);
-                modal.modal('show');
+                modal.$el.html(renderedForm);
+                modal.appendToDom();
+                modal.$el.modal('show');
             });
-
-            // modal events ...
-            $('#create-new-company').on('submit', function(e) {
-                e.preventDefault();
-                //newCompany.save();
-                return false;
-            });
-            $('.closeModal').on('click', function() {
-                modal.modal('hide');
-            });
-            console.log('im in modal');
         }
     });
     var app = new App({
