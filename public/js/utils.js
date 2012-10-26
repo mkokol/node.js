@@ -38,25 +38,3 @@ var fetchTemplate = function(path, done) {
     // Ensure a normalized return value (Promise)
     return def.promise();
   }
-
-$(document).ready(function() {
-
-  $('#create-new-company-btn').click(function() {
-    var modal = $("#modal-wnd"),
-      newCompany = new Company(),
-      newCompanyView = new CompanyView({
-        model: newCompany
-      });
-
-    modal.modal("show");
-    newCompanyView.drawForm(function(renderedForm) {
-      modal.html(renderedForm);
-    });
-
-  });
-
-  $(".closeModal").click(function() {
-    $('#modal-wnd').modal("hide");
-  });
-
-});

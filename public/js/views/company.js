@@ -2,7 +2,9 @@ var CompanyView = Backbone.View.extend({
 	tagName: 'tr',
 	template: '../../tmpl/company-row.html',
 	formTemplate: '../tmpl/new-company-form.html',
-	initialize: function() {},
+	initialize: function() {
+		//add listeners for crud	
+	},
 	render: function(callback) {
 		var _this = this;
 		fetchTemplate(_this.template, function(tmpl) {
@@ -13,7 +15,6 @@ var CompanyView = Backbone.View.extend({
 		});
 	},
 	events: {
-
 	},
 	drawForm: function(callback) {
 		var labels = this.model.labels,
@@ -25,5 +26,5 @@ var CompanyView = Backbone.View.extend({
 				callback(renderedForm);
 			}
 		});
-	}
+	}	
 });

@@ -1,4 +1,5 @@
 var Company = Backbone.Model.extend({
+    url: '/company',
     validation: {
         name: {
             required: true
