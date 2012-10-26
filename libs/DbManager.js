@@ -33,7 +33,7 @@ function DbManager(){
             city: { type: String, required: true },
             zip_code: { type: Number, required: true },
             url: { type: String },
-            contact: { type: [ContactSchema] }
+            contacts: { type: [ContactSchema] }
         });
         model.Company = db.model('Company', CompanySchema);
     }

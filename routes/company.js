@@ -15,7 +15,7 @@ exports.get = function(req, res){
     var page = req.param("page", 1);
     dbManager.model.Company.find()
         .paginate(page, dbManager.rowsPerPage, function(err, records, total) {
-            res.send({'total': total, 'records': records});
+            res.send({ status: 'saccess', 'total': total, 'records': records });
         });;
 };
 
@@ -25,21 +25,6 @@ exports.get = function(req, res){
  * @param req
  * @param res
  */
-//$.ajax({
-//    type: "PUT",
-//    url: '/company',
-//    data: {
-//        name: "name"
-//        , street: "street"
-//        , streetNumber: 2
-//        , city: "city"
-//        , zipCode: 12345
-//        , url: "url"
-//    },
-//    success: function(data) {
-//        console.log(data);
-//    }
-//});
 exports.put = function(req, res){
     var companyModel = new dbManager.model.Company({
         name: req.param("name", null)
@@ -53,7 +38,7 @@ exports.put = function(req, res){
         if(err){
             res.send({ status: 'error'});
         }else{
-            res.send({ status: 'saccess', company: companydData});
+            res.send({ status: 'saccess', company: companydData });
         }
     });
 };
