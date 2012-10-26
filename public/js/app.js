@@ -12,6 +12,7 @@ $(function() {
                 collection: companies,
                 el: $('#companies')
             });
+            companies.fetch();
         },
         showCreateCompanyModal: function() {
             var modal = $("#modal-wnd"),
@@ -26,12 +27,12 @@ $(function() {
             });
 
             // modal events ...
-            $('#create-new-company').submit(function(e) {
+            $('#create-new-company').on('submit', function(e) {
                 e.preventDefault();
                 //newCompany.save();
                 return false;
             });
-            $('.closeModal').click(function() {
+            $('.closeModal').on('click', function() {
                 modal.modal('hide');
             });
             console.log('im in modal');
