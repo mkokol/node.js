@@ -19,12 +19,64 @@ exports.get = function(req, res){
         });;
 };
 
+/**
+ * save new company to mongoDb
+ *
+ * @param req
+ * @param res
+ */
+//$.ajax({
+//    type: "PUT",
+//    url: '/company',
+//    data: {
+//        name: "name"
+//        , street: "street"
+//        , streetNumber: 2
+//        , city: "city"
+//        , zipCode: 12345
+//        , url: "url"
+//    },
+//    success: function(data) {
+//        console.log(data);
+//    }
+//});
 exports.put = function(req, res){
-    res.send({ status: 'saccess' });
+    var companyModel = new dbManager.model.Company({
+        name: req.param("name", null)
+        , street: req.param("street", null)
+        , street_number: req.param("streetNumber", null)
+        , city: req.param("city", null)
+        , zip_code: req.param("zipCode", null)
+        , url: req.param("url", null)
+    });
+    companyModel.save(function(err, companydData){
+        if(err){
+            res.send({ status: 'error'});
+        }else{
+            res.send({ status: 'saccess', company: companydData});
+        }
+    });
 };
 
 exports.post = function(req, res){
-    res.send({ status: 'saccess' });
+    var id = req.param("id", null);
+    if(id != null){
+        dbManager.model.Company.findOne({_id: id}, function(err, company){
+            company.name = req.param("name", null);
+            company.street = req.param("street", null);
+            company.street_number = req.param("streetNumber", null);
+            company.city = req.param("city", null);
+            company.zip_code = req.param("zipCode", null);
+            company.url = req.param("url", null);
+            company.save(function(err, companydData){
+                if(err){
+                    res.send({ status: 'error'});
+                }else{
+                    res.send({ status: 'saccess'});
+                }
+            });
+        });
+    }
 };
 
 exports.delete = function(req, res){

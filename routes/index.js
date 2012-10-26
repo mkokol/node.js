@@ -6,23 +6,6 @@
 dbManager = require('../libs/DbManager.js');
 
 exports.index = function(req, res){
-//    var company = new dbManager.model.Company(
-//        {
-//            "name": "test name"
-//            , "street": "test street"
-//            , "street_number": 1
-//            , "city": "test city"
-//            , "zip_code": 12345
-//        }
-//    );
-//    company.save(function(err){
-//        if(err){
-//            res.render('error', { title: 'World' });
-//        }else{
-//            res.render('index', { title: 'World' });
-//        }
-//    });
-
 //    dbManager.model.Company.find().execFind(function (arr, data) {
 //        data[1].contact.push(
 //            {
