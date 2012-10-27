@@ -1,4 +1,4 @@
-var Contacts = new Backbone.Collection.extend({
-	url: '/contacts',
+var Contacts = Backbone.Collection.extend({
+	url: null,
 	model: Contact
 })

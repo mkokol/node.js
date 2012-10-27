@@ -16,7 +16,7 @@ var ContactsView = Backbone.View.extend({
 				model: contact
 			});
 		contactView.render(function(companyRendered){
-			_this.$el.find('table').append(companyRendered);
+            _this.$el.find('table').append(companyRendered);
 		});
 	}
 });
