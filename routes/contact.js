@@ -10,9 +10,9 @@ exports.get = function(req, res){
     var companyModel = new dbManager.model.Company({
         name: req.param("name", null)
         , street: req.param("street", null)
-        , street_number: req.param("streetNumber", null)
+        , street_number: req.param("street_number", null)
         , city: req.param("city", null)
-        , zip_code: req.param("zipCode", null)
+        , zip_code: req.param("zip_code", null)
         , url: req.param("url", null)
     });
     companyModel.save(function(err, companydData){

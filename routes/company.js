@@ -18,7 +18,7 @@ exports.get = function(req, res){
         dbManager.model.Company.find()
             .paginate(page, dbManager.rowsPerPage, function(err, records, total) {
                 if(err){
-                    responseHandler.badRequest(res, "Error fetching companys");
+                    responseHandler.badRequest(res, "Error fetching company list");
                 }else{
                     res.send({ status: 'success', 'total': total, 'records': records });
                 }
@@ -45,9 +45,12 @@ exports.post = function(req, res){
     });
     companyModel.save(function(err, companydData){
         if(err){
-            res.send({ status: 'error'});
+            if(err.name == "ValidationError"){
+                responseHandler.badRequest(res, "Please fill all required fields");
+            }
+            responseHandler.badRequest(res, "Error saving company");
         }else{
-            res.send({ status: 'success', company: companydData });
+            res.send({ company: companydData });
         }
     });
 };
@@ -70,9 +73,12 @@ exports.put = function(req, res){
             company.url = req.param("url", null);
             company.save(function(err, companydData){
                 if(err){
-                    res.send({ status: 'error'});
+                    if(err.name == "ValidationError"){
+                        responseHandler.badRequest(res, "Please fill all required fields");
+                    }
+                    responseHandler.badRequest(res, "Error saving company");
                 }else{
-                    res.send({ status: 'success'});
+                    res.send({ company: companydData });
                 }
             });
         });
@@ -92,7 +98,7 @@ exports.delete = function(req, res){
             company.key_to_delete = undefined;
             company.remove(function(err){
                 if(err){
-                    res.send({ status: 'error', "id": id });
+                    responseHandler.badRequest(res, "Error deleting company");
                 }else{
                     res.send({ status: 'success', "id": id });
                 }
