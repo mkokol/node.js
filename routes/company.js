@@ -63,28 +63,26 @@ exports.post = function(req, res){
  * @param res
  */
 exports.put = function(req, res){
-    var id = req.param("id", null);
-    if(id != null){
-        dbManager.model.Company.findOne({_id: id}, function(err, company){
-            company.name = req.param("name", null);
-            company.street = req.param("street", null);
-            company.street_number = req.param("street_number", null);
-            company.city = req.param("city", null);
-            company.zip_code = req.param("zip_code", null);
-            company.url = req.param("url", null);
-            company.save(function(err, companydData){
-                if(err){
-                    if(err.name == "ValidationError"){
-                        responseHandler.badRequest(res, "Please fill all required fields");
-                    }else{
-                        responseHandler.badRequest(res, "Error saving company");
-                    }
+    var id = req.params.id;
+    dbManager.model.Company.findOne({_id: id}, function(err, company){
+        company.name = req.param("name", null);
+        company.street = req.param("street", null);
+        company.street_number = req.param("street_number", null);
+        company.city = req.param("city", null);
+        company.zip_code = req.param("zip_code", null);
+        company.url = req.param("url", null);
+        company.save(function(err, companydData){
+            if(err){
+                if(err.name == "ValidationError"){
+                    responseHandler.badRequest(res, "Please fill all required fields");
                 }else{
-                    res.send({ company: companydData });
+                    responseHandler.badRequest(res, "Error saving company");
                 }
-            });
+            }else{
+                res.send({ company: companydData });
+            }
         });
-    }
+    });
 };
 
 /**
@@ -95,15 +93,13 @@ exports.put = function(req, res){
  */
 exports.delete = function(req, res){
     var id = req.params.id;
-    if(id != null){
-        dbManager.model.Company.findOne({_id: id}, function(err, company){
-            company.remove(function(err){
-                if(err){
-                    responseHandler.badRequest(res, "Error deleting company");
-                }else{
-                    res.send({ "id": id });
-                }
-            });
+    dbManager.model.Company.findOne({_id: id}, function(err, company){
+        company.remove(function(err){
+            if(err){
+                responseHandler.badRequest(res, "Error deleting company");
+            }else{
+                res.send({ "id": id });
+            }
         });
-    }
+    });
 };

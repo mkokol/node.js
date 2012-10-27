@@ -2,15 +2,15 @@
  * Module dependencies.
  */
 
+var config = require('./config.js');
+GLOBAL.env = config.env;
+
 var express = require('express')
   , http = require('http')
   , path = require('path')
   , routes = require('./routes')
   , company = require('./routes/company')
-  , contact = require('./routes/contact')
-
-  , popup = require('./routes/popup')
-  , popupwnd = require('./routes/popupwnd');
+  , contact = require('./routes/contact');
 
 var app = express();
 
@@ -31,12 +31,10 @@ app.configure('development', function(){
 });
 
 app.get('/', routes.index);
-app.get('/popupwnd', popupwnd.popupwnd);
-app.get('/popup', popup.popup);
 
 app.get('/company', company.get);
 app.post('/company', company.post);
-app.put('/company', company.put);
+app.put('/company/:id', company.put);
 app.delete('/company/:id', company.delete);
 
 app.get('/contact', contact.get);

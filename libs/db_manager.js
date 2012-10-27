@@ -14,7 +14,7 @@ function dbManager(){
     var rowsPerPage = config.paging.count;
 
     function createConnection(){
-        db = mongoose.createConnection(config.db.host, config.db.name);
+        db = mongoose.createConnection(config.db[env].host, config.db[env].name);
     }
 
     function initDbSchema(){

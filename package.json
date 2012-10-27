@@ -12,6 +12,6 @@
     "mongoose": "latest",
     "mongoose-pagination": "latest",
     "socket.io": "latest",
-    "nodeunit": "latest"
+    "underscore": "latest"
   }
 }
