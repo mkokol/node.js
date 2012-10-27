@@ -1,4 +1,6 @@
 var Contact = Backbone.Model.extend({
+    idAttribute: "_id",
+    urlRoot: '/contacts',
     name: {
         required: true
         , msg: "Name is required"
@@ -14,7 +16,7 @@ var Contact = Backbone.Model.extend({
     , labels: {
         name: "Name"
         , position: "Position"
-        , phone_number: "Pphone number"
+        , phone_number: "Phone number"
     }
     , defaults: {
         name: ""

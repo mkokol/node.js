@@ -47,8 +47,9 @@ exports.post = function(req, res){
         if(err){
             if(err.name == "ValidationError"){
                 responseHandler.badRequest(res, "Please fill all required fields");
+            } else{
+                responseHandler.badRequest(res, "Error saving company");
             }
-            responseHandler.badRequest(res, "Error saving company");
         }else{
             res.send({ company: companydData });
         }
@@ -75,8 +76,9 @@ exports.put = function(req, res){
                 if(err){
                     if(err.name == "ValidationError"){
                         responseHandler.badRequest(res, "Please fill all required fields");
+                    }else{
+                        responseHandler.badRequest(res, "Error saving company");
                     }
-                    responseHandler.badRequest(res, "Error saving company");
                 }else{
                     res.send({ company: companydData });
                 }
@@ -92,7 +94,7 @@ exports.put = function(req, res){
  * @param res
  */
 exports.delete = function(req, res){
-    var id = req.param("id", null);
+    var id = req.params.id;
     if(id != null){
         dbManager.model.Company.findOne({_id: id}, function(err, company){
             company.key_to_delete = undefined;
@@ -100,7 +102,7 @@ exports.delete = function(req, res){
                 if(err){
                     responseHandler.badRequest(res, "Error deleting company");
                 }else{
-                    res.send({ status: 'success', "id": id });
+                    res.send({ "id": id });
                 }
             });
         });

@@ -11,6 +11,7 @@
     "mongodb": "latest",
     "mongoose": "latest",
     "mongoose-pagination": "latest",
-    "socket.io": "latest"
+    "socket.io": "latest",
+    "nodeunit": "latest"
   }
 }

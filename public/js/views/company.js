@@ -19,7 +19,7 @@ var CompanyView = Backbone.View.extend({
 		'click .remove-company' : 'removeCompanyModel'
 	},
 	removeCompanyModel: function(){
-		this.model.destroy();		
+        this.model.destroy();
 	},
 	removeCompanyView: function(){
 		this.$el.remove();

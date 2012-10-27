@@ -37,7 +37,7 @@ app.get('/popup', popup.popup);
 app.get('/company', company.get);
 app.post('/company', company.post);
 app.put('/company', company.put);
-app.delete('/company', company.delete);
+app.delete('/company/:id', company.delete);
 
 app.get('/contact', contact.get);
 app.post('/contact', contact.post);
