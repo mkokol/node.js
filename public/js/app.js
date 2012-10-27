@@ -33,16 +33,21 @@ var App = Backbone.View.extend({
             modal.appendToDom().show();
             modal.$el.on('submit', function(e) {
                 e.preventDefault();
-                var data = {};
+                $(".control-group").removeClass("error");
+                $(".help-inline").html("");
                 modal.$el.find('input').each(function(i, el) {
-                    var $el = $(el),
-                        key = $el.attr('name'),
-                        value = $el.val();
-                    data[key] = value;
+                    var $el = $(el);
+                    // newCompany.set didn't work ((
+                    newCompany.attributes[$el.attr('name')] = $el.val();
                 });
-                newCompany.save(data);
-                _this.companies.fetch();
-                modal.close();
+                var validationErrors = newCompany.validate();
+                if(newCompany.isValid()){
+                    newCompany.save();
+                    _this.companies.fetch();
+                    modal.close();
+                }else{
+                    newCompanyView.showValidationErrors(validationErrors);
+                }
             });
         });
     }

@@ -1,6 +1,7 @@
 var CompaniesView = Backbone.View.extend({
 	pagingTemplate: "../../tmpl/paging.html",
 	initialize: function() {
+        Backbone.Validation.bind(this);
 		this.collection.on('add', this.addOne, this);
 		this.collection.on('reset', this.render, this);
 	},	

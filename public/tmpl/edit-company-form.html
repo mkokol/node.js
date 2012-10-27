@@ -1,13 +1,24 @@
-<h4 class="modal-header">Edit Company</h4>
-<div class="modal-body">
-	<form id="edit-company">
-		<% for(var key in obj) { %> 
-		<input type="text" name="<%= key %>" value="<%= obj[key] %>"/>
+<div class="modal-header">
+    <a class="close" data-dismiss="modal">&times;</a>
+    <h4>Edit Company</h4>
+</div>
+<form id="edit-company" class="form-horizontal">
+    <div class="modal-body" >
+		<% for(var key in obj) { %>
+            <div id="control-group-company-<%= key %>" class="control-group">
+                <label for="<%= key %>" class="control-label"><%= obj[key].label %></label>
+                <div class="controls">
+                    <input type="text" name="<%= key %>" value="<%= obj[key].data %>"/>
+                    <span id="help-inline-company-<%= key %>" class="help-inline"></span>
+                </div>
+            </div>
 		<% } %>
+    </div>
+    <div class="modal-footer">
 		<button type="submit" class="btn btn-small btn-success">
 			<i class="icon-ok icon-white"></i>
 			Edit Company
 		</button>
 		<a class="btn btn-small btn-primary closeModal">Cancel</a>
-	</form>
-</div>
+    </div>
+</form>

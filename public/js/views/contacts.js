@@ -1,7 +1,8 @@
 var ContactsView = Backbone.View.extend({
 	tagName: 'tr',
-	template: '../tmpl/contacts.html'
+	template: '../tmpl/contacts.html',
 	initialize: function() {
+        Backbone.Validation.bind(this);
 		// add crud listeners
 	},	
 	render: function(callback) {

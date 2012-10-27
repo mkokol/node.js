@@ -6,7 +6,7 @@ var Company = Backbone.Model.extend({
             required: true
             , msg: "Name is required"
         }
-        , Street: {
+        , street: {
             required: true
             , msg: "Street is required"
         }
@@ -16,7 +16,7 @@ var Company = Backbone.Model.extend({
                 , msg: "Street number is required"
             }
             ,{
-                pattern: /^0-9/
+                pattern: "digits"
                 , msg: "Only digits is allowed"
             }
         ]
@@ -30,17 +30,17 @@ var Company = Backbone.Model.extend({
                 , msg: "Phone number is required"
             }
             ,{
-                pattern: /^0-9/
+                pattern: "digits"
                 , msg: "Only digits is allowed"
             }
         ]
     }
     , labels: {
-        name: "Name"
-        , street: "Street"
-        , street_number: "Street Number"
-        , city: "City"
-        , zip_code: "Zip code"
+        name: "Name*"
+        , street: "Street*"
+        , street_number: "Street Number*"
+        , city: "City*"
+        , zip_code: "Zip code*"
         , url : "Url"
     }
     , defaults: {

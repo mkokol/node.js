@@ -63,3 +63,15 @@ var ModalWindow = Backbone.View.extend({
     this.$el.remove();
   }
 });
+
+
+//_.extend(Backbone.Validation.callbacks, {
+//    valid: function(view, attr, selector) {
+//        console.log("sacess");
+//        return false;
+//    },
+//    invalid: function(view, attr, error, selector) {
+//        console.log("error");
+//        return false;
+//    }
+//});

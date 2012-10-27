@@ -2,7 +2,7 @@ var ContactView = Backbone.View.extend({
 	tagName: 'tr',
 	template: '../../tmpl/contact.html',
 	initialize: function() {
-		
+        Backbone.Validation.bind(this);
 	},
 	render: function(callback) {
 		var _this = this;

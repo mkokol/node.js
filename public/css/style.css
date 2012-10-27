@@ -12,3 +12,9 @@
 
 #companies{width: 980px}
 #modal-wnd{width: 250px}
+
+
+form {margin: 0px;}
+.modal{width: 630px;}
+.modal label{width: 160px;}
+.modal label:after{ content: " : "}

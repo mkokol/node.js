@@ -4,6 +4,7 @@ var CompanyView = Backbone.View.extend({
 	formTemplate: '../tmpl/new-company-form.html',
 	editFormTemplate: '../tmpl/edit-company-form.html',
 	initialize: function() {
+        Backbone.Validation.bind(this);
 		//add listeners for crud
 		this.model.on('destroy', this.removeCompanyView, this);
 		this.model.on('change', this.render, this);
@@ -38,7 +39,7 @@ var CompanyView = Backbone.View.extend({
 
 		// throw away unnecesary properties i.e id
 		for(key in modelData) {
-			if(_.has(labels, key)) fields[key] = modelData[key]
+			if(_.has(labels, key)) fields[key] = {data: modelData[key], label:labels[key]}
 		}
 
 		fetchTemplate(_this.editFormTemplate, function(tmpl) {
@@ -47,15 +48,18 @@ var CompanyView = Backbone.View.extend({
 			modal.appendToDom().show();
 			modal.$el.on('submit', function(e) {
 				e.preventDefault();
-				var data = {};
 				modal.$el.find('input').each(function(i, el) {
-					var $el = $(el),
-						key = $el.attr('name'),
-						value = $el.val();
-					data[key] = value;
+					var $el = $(el);
+                    // newCompany.set didn't work ((
+                    _this.model.attributes[$el.attr('name')] = $el.val();
 				});
-				_this.model.save(data);
-				modal.close();
+                var validationErrors = _this.model.validate();
+                if(_this.model.isValid()){
+                    _this.model.save();
+				    modal.close();
+                }else{
+                    _this.showValidationErrors(validationErrors);
+                }
 			});
 		});
 	},
@@ -74,5 +78,11 @@ var CompanyView = Backbone.View.extend({
 		var contacts = new Contacts(this.model.get('contacts'));
 		var contactsView = new ContactsView({collection: contacts});
 		contactsView.render();
-	}
+	},
+    showValidationErrors: function(errors){
+        for(key in errors){
+            $("#control-group-company-" + key).addClass("error");
+            $("#help-inline-company-" + key).html(errors[key]);
+        }
+    }
 });
