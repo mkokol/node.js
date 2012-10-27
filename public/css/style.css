@@ -4,9 +4,10 @@
 
 /* adjusts/resets */
 #modal-wnd h4,
-#modal-wnd form{
-	margin: 0
-}
+#modal-wnd form{margin: 0}
+
+.pagination{height: 0;margin: 0;}
+.pagination ul > li > a{line-height: 23px;}
 
 
 #companies{width: 980px}

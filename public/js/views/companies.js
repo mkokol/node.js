@@ -25,7 +25,7 @@ var CompaniesView = Backbone.View.extend({
 		var _this = this,
 			total = this.collection.total;
 		fetchTemplate(this.pagingTemplate, function(tmpl) {
-			_this.$el.find('#paging').html(tmpl());
+			_this.$el.append(tmpl());
 		});
 	}
 });
