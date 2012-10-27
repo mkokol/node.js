@@ -1,27 +1,30 @@
 var CompaniesView = Backbone.View.extend({
-    pagingTemplate: "../../tmpl/paging.html",
+	pagingTemplate: "../../tmpl/paging.html",
 	initialize: function() {
 		this.collection.on('add', this.addOne, this);
 		this.collection.on('reset', this.render, this);
 	},
+	events: {
+
+	},
 	render: function() {
 		this.collection.forEach(this.addOne, this);
-        this.addPging();
+		this.addPaging();
 	},
 	addOne: function(company) {
-		var _this = this;
-		var companyView = new CompanyView({
-			model: company
-		});
-		console.log(company.toJSON());
+		var _this = this,
+			companyView = new CompanyView({
+				model: company
+			});		
 		companyView.render(function(companyEl) {
-			_this.$el.append(companyEl);
-		});		
+			_this.$el.find('table').append(companyEl);
+		});
 	},
-    addPging: function(){
-        var total = this.collection.total;
-        fetchTemplate(this.pagingTemplate, function(tmpl){
-//            $("#paging").html(tmpl());
-        });
-    }
+	addPaging: function() {
+		var _this = this,
+			total = this.collection.total;
+		fetchTemplate(this.pagingTemplate, function(tmpl) {
+			_this.$el.find('#paging').html(tmpl());
+		});
+	}
 });

@@ -39,29 +39,21 @@ var fetchTemplate = function(path, done) {
     return def.promise();
   }
 
-  var ModalWindow = Backbone.View.extend({
-    className: 'modal',
-    ttt: 123,
-    events: {
-      'click .closeModal' : 'close',
-      'submit form' : 'submitForm'
-    },
-    render: function(){
-      return this.$el
-    },
-    appendToDom: function(){
-      $('body').append(this.$el);
-    },
-    close: function(){
-      this.$el.modal('hide');
-    },
-    destroy: function(){
-      this.$el.remove();
-    },
-    submitForm: function(e){
-      e.preventDefault();
-      console.log("save");
-      console.log(this.ttt);
-      console.log(this.model);
-    }
-  });
+var ModalWindow = Backbone.View.extend({
+  className: 'modal',
+  events: {
+    'click .closeModal': 'close'
+  },
+  render: function() {
+    return this.$el
+  },
+  appendToDom: function() {
+    $('body').append(this.$el);
+  },
+  close: function() {
+    this.$el.modal('hide');
+  },
+  destroy: function() {
+    this.$el.remove();
+  }
+});
