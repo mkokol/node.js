@@ -73,5 +73,6 @@ var CompanyView = Backbone.View.extend({
 	showContacts: function(){
 		var contacts = new Contacts(this.model.get('contacts'));
 		var contactsView = new ContactsView({collection: contacts});
+		contactsView.render();
 	}
 });
