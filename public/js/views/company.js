@@ -69,16 +69,5 @@ var CompanyView = Backbone.View.extend({
 				callback(renderedForm);
 			}
 		});
-	},
-	drawEditForm: function(callback) {
-		var labels = this.model.labels,
-			_this = this;
-
-		fetchTemplate(_this.formTemplate, function(tmpl) {
-			var renderedForm = tmpl(labels);
-			if(_.isFunction(callback)) {
-				callback(renderedForm);
-			}
-		});
 	}
 });
