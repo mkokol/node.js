@@ -18,8 +18,10 @@ var CompanyView = Backbone.View.extend({
 		});
 	},
 	events: {
-		'click .remove-company': 'removeCompanyModel',
-		'click .edit-company': 'editCompany'
+		'click .contacts-company' : 'showContacts',
+		'click .edit-company': 'editCompany',
+		'click .remove-company': 'removeCompanyModel'
+		
 	},	
 	removeCompanyModel: function() {
 		this.model.destroy();
@@ -31,9 +33,7 @@ var CompanyView = Backbone.View.extend({
 		var modelData = this.model.toJSON(),
 			labels = this.model.labels,
 			_this = this,
-			modal = new ModalWindow({
-				id: 'modal-wnd-edit'
-			}),
+			modal = new ModalWindow(),
 			fields = {}
 
 		// throw away unnecesary properties i.e id
@@ -69,5 +69,9 @@ var CompanyView = Backbone.View.extend({
 				callback(renderedForm);
 			}
 		});
+	},
+	showContacts: function(){
+		var contacts = new Contacts(this.model.get('contacts'));
+		var contactsView = new ContactsView({collection: contacts});
 	}
 });

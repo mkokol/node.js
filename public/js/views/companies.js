@@ -3,10 +3,7 @@ var CompaniesView = Backbone.View.extend({
 	initialize: function() {
 		this.collection.on('add', this.addOne, this);
 		this.collection.on('reset', this.render, this);
-	},
-	events: {
-
-	},
+	},	
 	render: function() {
 		this.$el.find('table tbody').empty();
 		this.collection.forEach(this.addOne, this);

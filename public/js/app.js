@@ -22,9 +22,7 @@ var App = Backbone.View.extend({
     },
     showCreateCompanyModal: function() {
         var _this = this,
-            modal = new ModalWindow({
-                id: 'modal-wnd'
-            }),
+            modal = new ModalWindow(),
             newCompany = new Company(),
             newCompanyView = new CompanyView({
                 model: newCompany
