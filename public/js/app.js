@@ -31,8 +31,7 @@ var App = Backbone.View.extend({
 
         newCompanyView.drawForm(function(renderedForm) {
             modal.$el.html(renderedForm);
-            modal.appendToDom();
-            modal.$el.modal('show');
+            modal.appendToDom().show();
             modal.$el.on('submit', function(e) {
                 e.preventDefault();
                 var data = {};

@@ -49,9 +49,15 @@ var ModalWindow = Backbone.View.extend({
   },
   appendToDom: function() {
     $('body').append(this.$el);
+    return this;
+  },
+  show: function(){
+    this.$el.modal('show');
+    return this;
   },
   close: function() {
     this.$el.modal('hide');
+    return this;
   },
   destroy: function() {
     this.$el.remove();
