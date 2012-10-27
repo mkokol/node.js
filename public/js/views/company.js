@@ -3,7 +3,8 @@ var CompanyView = Backbone.View.extend({
 	template: '../../tmpl/company-row.html',
 	formTemplate: '../tmpl/new-company-form.html',
 	initialize: function() {
-		//add listeners for crud	
+		//add listeners for crud
+		this.model.on('destroy', this.removeCompanyView, this);
 	},
 	render: function(callback) {
 		var _this = this;
@@ -15,6 +16,13 @@ var CompanyView = Backbone.View.extend({
 		});
 	},
 	events: {
+		'click .remove-company' : 'removeCompanyModel'
+	},
+	removeCompanyModel: function(){
+		this.model.destroy();		
+	},
+	removeCompanyView: function(){
+		this.$el.remove();
 	},
 	drawForm: function(callback) {
 		var labels = this.model.labels,
