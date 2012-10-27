@@ -6,7 +6,6 @@ var express = require('express')
   , http = require('http')
   , path = require('path')
   , routes = require('./routes')
-
   , company = require('./routes/company')
   , contact = require('./routes/contact')
 
@@ -40,6 +39,7 @@ app.post('/company', company.post);
 app.put('/company', company.put);
 app.delete('/company', company.delete);
 
+app.get('/contact', contact.get);
 app.post('/contact', contact.post);
 app.put('/contact', contact.put);
 

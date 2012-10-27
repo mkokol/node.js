@@ -22,6 +22,7 @@ $(function() {
                 newCompanyView = new CompanyView({
                     model: newCompany
                 });
+                newCompanyView.ttt = 76575;
 
             newCompanyView.drawForm(function(renderedForm) {
                 modal.$el.html(renderedForm);

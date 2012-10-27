@@ -3,7 +3,7 @@
  * GET home page.
  */
 
-dbManager = require('../libs/DbManager.js');
+dbManager = require('../libs/db_manager.js');
 
 exports.popup = function(req, res){
 

@@ -41,6 +41,7 @@ var fetchTemplate = function(path, done) {
 
   var ModalWindow = Backbone.View.extend({
     className: 'modal',
+    ttt: 123,
     events: {
       'click .closeModal' : 'close',
       'submit form' : 'submitForm'
@@ -58,6 +59,9 @@ var fetchTemplate = function(path, done) {
       this.$el.remove();
     },
     submitForm: function(e){
-      e.preventDefault();      
+      e.preventDefault();
+      console.log("save");
+      console.log(this.ttt);
+      console.log(this.model);
     }
   });

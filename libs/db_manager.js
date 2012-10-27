@@ -8,7 +8,7 @@ require('mongoose-pagination');
 var config = require('../config.js')
   , mongoose = require("mongoose");
 
-function DbManager(){
+function dbManager(){
     var db;
     var model = {};
     var rowsPerPage = config.paging.count;
@@ -47,4 +47,4 @@ function DbManager(){
     };
 }
 
-module.exports = DbManager();
+module.exports = dbManager();

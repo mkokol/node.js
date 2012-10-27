@@ -3,8 +3,29 @@
  * Company's contact controller.
  */
 
-var dbManager = require('../libs/DbManager.js');
+var dbManager = require('../libs/db_manager');
+var responseHandler = require('../libs/response_handler');
 
+exports.get = function(req, res){
+    var companyModel = new dbManager.model.Company({
+        name: req.param("name", null)
+        , street: req.param("street", null)
+        , street_number: req.param("streetNumber", null)
+        , city: req.param("city", null)
+        , zip_code: req.param("zipCode", null)
+        , url: req.param("url", null)
+    });
+    companyModel.save(function(err, companydData){
+        if(err){
+            if(err.name == "ValidationError"){
+                responseHandler.badRequest(res, "Please fill all required fields");
+            }
+            responseHandler.badRequest(res, "Error seving companys");
+        }else{
+            res.send({ company: companydData });
+        }
+    });
+}
 /**
  * add company's contact to mongoDb
  *
