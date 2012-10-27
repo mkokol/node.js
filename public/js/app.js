@@ -13,17 +13,18 @@ var App = Backbone.View.extend({
         'click #create-new-company-btn': 'showCreateCompanyModal'
     },
     initCompanies: function() {
-        var companies = new Companies();
+        this.companies = new Companies();
         var companiesView = new CompaniesView({
-            collection: companies,
+            collection: this.companies,
             el: $('#companies')
         });
-        companies.fetch();
+        this.companies.fetch();
     },
     showCreateCompanyModal: function() {
-        var modal = new ModalWindow({
-            id: 'modal-wnd'
-        }),
+        var _this = this,
+            modal = new ModalWindow({
+                id: 'modal-wnd'
+            }),
             newCompany = new Company(),
             newCompanyView = new CompanyView({
                 model: newCompany
@@ -42,6 +43,7 @@ var App = Backbone.View.extend({
                     data[key] = value;
                 });
                 newCompany.save(data);
+                _this.companies.fetch();
                 modal.close();
             });
         });

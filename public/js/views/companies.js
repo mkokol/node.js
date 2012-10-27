@@ -8,6 +8,7 @@ var CompaniesView = Backbone.View.extend({
 
 	},
 	render: function() {
+		this.$el.find('table').empty();
 		this.collection.forEach(this.addOne, this);
 		this.addPaging();
 	},

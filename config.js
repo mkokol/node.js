@@ -4,6 +4,6 @@ module.exports = {
         , "name": "companies_contacts"
     }
     , "paging": {
-        "count" : 2
+        "count" : 15
     }
 }
