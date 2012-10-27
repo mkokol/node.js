@@ -1,8 +1,8 @@
 <h4 class="modal-header">Edit Company</h4>
 <div class="modal-body">
 	<form id="edit-company">
-		<% for(var name in obj) { %> 
-		<input type="text" name="<%= name %>" value="<%= obj[name] %>"/>
+		<% for(var key in obj) { %> 
+		<input type="text" name="<%= key %>" value="<%= obj[key] %>"/>
 		<% } %>
 		<button type="submit" class="btn btn-small btn-success">
 			<i class="icon-ok icon-white"></i>
