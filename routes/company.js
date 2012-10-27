@@ -97,7 +97,6 @@ exports.delete = function(req, res){
     var id = req.params.id;
     if(id != null){
         dbManager.model.Company.findOne({_id: id}, function(err, company){
-            company.key_to_delete = undefined;
             company.remove(function(err){
                 if(err){
                     responseHandler.badRequest(res, "Error deleting company");
