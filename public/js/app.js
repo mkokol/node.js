@@ -37,7 +37,7 @@ var App = Backbone.View.extend({
                 $(".help-inline").html("");
                 modal.$el.find('input').each(function(i, el) {
                     var $el = $(el);
-                    // newCompany.set didn't work ((
+                    // newCompany.set didn't work for new model((
                     newCompany.attributes[$el.attr('name')] = $el.val();
                 });
                 var validationErrors = newCompany.validate();

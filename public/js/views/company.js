@@ -48,11 +48,12 @@ var CompanyView = Backbone.View.extend({
 			modal.appendToDom().show();
 			modal.$el.on('submit', function(e) {
 				e.preventDefault();
+                var data = {}
 				modal.$el.find('input').each(function(i, el) {
 					var $el = $(el);
-                    // newCompany.set didn't work ((
-                    _this.model.attributes[$el.attr('name')] = $el.val();
+                    data[$el.attr('name')] = $el.val();
 				});
+                _this.model.set(data);
                 var validationErrors = _this.model.validate();
                 if(_this.model.isValid()){
                     _this.model.save();
