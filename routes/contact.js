@@ -85,7 +85,7 @@ exports.delete = function(req, res){
         if(company != null){
             for (var key in company.contacts) {
                 if(company.contacts[key]._id == id) {
-                    company.contacts =  company.contacts.slice(key, 1);
+                    delete company.contacts.splice(key, 1);
                     break;
                 }
             }
