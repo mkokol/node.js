@@ -1,25 +1,16 @@
 var ContactsView = Backbone.View.extend({
-	tagName: 'tr',
-    companyId: "123",
-	template: '../tmpl/contacts.html',
-    previewBlockTemplate: '../tmpl/contacts-preview-block.html',
+    el: ".company-contacts-block",
+    tagName: 'tr',
+    companyId: null,
 	initialize: function() {
         Backbone.Validation.bind(this);
 		// add crud listeners
 	},
+	render: function(callback) {
+        this.collection.forEach(this.addOne, this);
+	},
     events: {
         'click #create-new-contact-btn': 'showCreateContactModal'
-    },
-	render: function(callback) {
-        var _this = this;
-		fetchTemplate(_this.previewBlockTemplate, function(tmpl) {
-            $("#company-" + _this.companyId).after(tmpl());
-            _this.buildGrid();
-        });
-	},
-    buildGrid: function(){
-        this.$el.find('table tbody').empty();
-        this.collection.forEach(this.addOne, this);
     },
 	addOne: function(contact) {
         var _this = this,
@@ -27,7 +18,8 @@ var ContactsView = Backbone.View.extend({
 				model: contact
 			});
 		contactView.render(function(companyRendered){
-            _this.$el.find('table').append(companyRendered);
+            console.log(_this.$el);
+            _this.$el.find('#contacts-grid').append(companyRendered);
 		});
 	},
     showCreateContactModal: function(){

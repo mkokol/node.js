@@ -1,4 +1,5 @@
 var Company = Backbone.Model.extend({
+    formTemplate: "../tmpl/company-form.html",
     idAttribute: "_id",
     urlRoot: '/company',
     validation: {

@@ -1,25 +1,26 @@
-<div class="modal-header">
-    <a class="close" data-dismiss="modal">&times;</a>
-    <h4>Create New Company</h4>
-</div>
-<form id="create-new-company" class="form-horizontal">
-    <div class="modal-body">
-		<% for(var key in obj) { %>
-            <div id="control-group-company-<%= key %>" class="control-group">
-                <label for="<%= key %>" class="control-label"><%= obj[key] %></label>
-                <div class="controls">
-                    <input type="text" name="<%= key %>"/>
-                    <span id="help-inline-company-<%= key %>" class="help-inline"></span>
+<div class="modal fade" id="modal-wnd">
+    <div class="modal-header">
+        <a class="close" data-dismiss="modal">&times;</a>
+        <h4>Create New Company</h4>
+    </div>
+    <form id="create-new-company" class="form-horizontal">
+        <div class="modal-body">
+            <% for(var key in obj) { %>
+                <div id="control-group-<%= key %>" class="control-group">
+                    <label for="<%= key %>" class="control-label"><%= obj[key] %></label>
+                    <div class="controls">
+                        <input type="text" name="<%= key %>"/>
+                        <span id="help-inline-<%= key %>" class="help-inline"></span>
+                    </div>
                 </div>
-            </div>
-		<% } %>
-    </div>
-    <div class="modal-footer">
-		<button type="submit" class="btn btn-small btn-success">
-			<i class="icon-ok icon-white"></i>
-			Create New Company
-		</button>
-		<a class="btn btn-small btn-primary closeModal">Cancel</a>
-    </div>
-</form>
-
+            <% } %>
+        </div>
+        <div class="modal-footer">
+            <button id="submit-form" type="submit" class="btn btn-small btn-success">
+                <i class="icon-ok icon-white"></i>
+                Create New Company
+            </button>
+            <a class="btn btn-small btn-primary closeModal">Cancel</a>
+        </div>
+    </form>
+</div>

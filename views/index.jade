@@ -1,33 +1,36 @@
 extends layout
 block append head
-  script(src="/js/models/contact.js")
-  script(src="/js/views/contact.js")
-  script(src="/js/models/company.js")
-  script(src="/js/views/company.js")
-  script(src="/js/collections/contacts.js")
-  script(src="/js/views/contacts.js")
-  script(src="/js/collections/companies.js")  
-  script(src="/js/views/companies.js")
   script(src="/js/utils.js")
+  script(src="/js/models/contact.js")
+  script(src="/js/models/company.js")
+  script(src="/js/collections/contacts.js")
+  script(src="/js/collections/companies.js")
+  script(src="/js/views/companies.js")
+  script(src="/js/views/contacts.js")
+  script(src="/js/views/company.js")
+  script(src="/js/views/contact.js")
+  script(src="/js/views/modal_window.js")
   script(src="/js/app.js")
    
 block content
   body
     div.container
       h1 test Contact View
-      div.content-right.add-company-place-holder
-        a#create-new-company-btn.btn.btn-small(type="button", data-toggle="modal")
-          i.icon-plus-sign
-          |Create New Company
 
       div#companies
-        table.table.table-bordered.table-condensed
+
+        div.content-right.add-company-place-holder
+          a#create-new-company-btn.btn.btn-small(type="button", data-toggle="modal")
+              i.icon-plus-sign
+              |Create New Company
+
+        table#companies-grid.table.table-bordered.table-condensed
           thead
             tr
-              th name
-              th street
-              th number
-              th city
-              th zipcode
-              th website
-              th options
+              th Name
+              th Street
+              th Street number
+              th City
+              th Zipcode
+              th Website
+              th Options
