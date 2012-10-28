@@ -3,6 +3,7 @@ var fetchTemplate = function(path, done) {
     var def = new $.Deferred();
     // Should be an instant synchronous way of getting the template, if it
     // exists in the JST object.
+
     if(JST[path]) {
       if(_.isFunction(done)) {
         done(JST[path]);

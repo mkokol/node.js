@@ -5,7 +5,6 @@ var CompaniesView = Backbone.View.extend({
         'click #create-new-company-btn': 'createCompanyModalWnd'
     }
     , initialize: function() {
-        Backbone.Validation.bind(this);
 		this.collection.on('add', this.addOne, this);
 		this.collection.on('reset', this.render, this);
 	}
@@ -31,9 +30,15 @@ var CompaniesView = Backbone.View.extend({
 		});
 	}
     , createCompanyModalWnd: function() {
-        var company = new Company()
+        var _this = this
+        , company = new Company()
         , modal = new ModalWindow({model: company});
-        modal.companies = this.collection;
-        modal.render();
+        modal.render(
+            "Create company"
+            , function(model){delete modal; _this.updateCollection()}
+        );
+    }
+    , updateCollection: function(){
+        this.collection.fetch()
     }
 });

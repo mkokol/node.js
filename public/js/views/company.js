@@ -4,7 +4,6 @@ var CompanyView = Backbone.View.extend({
 	, companyFormTemplate: '../tmpl/company-form.html'
     , previewContactsBlockTemplate: '../tmpl/contacts-preview-block.html'
 	, initialize: function() {
-        Backbone.Validation.bind(this);
 		//add listeners for crud
 		this.model.on('destroy', this.removeCompanyView, this);
 		this.model.on('change', this.render, this);
@@ -32,16 +31,18 @@ var CompanyView = Backbone.View.extend({
 		this.$el.remove();
 	}
     , editCompanyModalWnd: function(callback) {
-        var company = new Company()
-        , modal = new ModalWindow({model: this.model});
-        modal.render();
+        var modal = new ModalWindow({model: this.model});
+        modal.render(
+            "Edit company"
+            , function(model){delete modal;}
+        );
 	}
 	, showContacts: function(){
         $(".company-contacts-block").remove();
         var companyId = this.model.get("_id");
         var contactsData = this.model.get('contacts');
         fetchTemplate(this.previewContactsBlockTemplate, function(tmpl) {
-            $("#company-" + companyId).after(tmpl());
+            $("#company-" + companyId).after(tmpl(contactsData.length));
             for(var key in contactsData){
                 contactsData[key].company_id = companyId;
             }

@@ -1,48 +1,49 @@
 var ModalWindow = Backbone.View.extend({
     el: "body"
-    , companies: null
+    , wndTemplate: "../tmpl/add-edit-form.html"
+    , callBack: null
     , events: {
         "click .closeModal": "close"
-        , "submit": "submit"
+        , "click .close": "close"
+        , "click .modal-backdrop": "close"
+        , "click #save": "submit"
     }
     , initialize: function() {
         Backbone.Validation.bind(this);
     }
-    , render: function() {
-        var modelData = this.model.toJSON()
-        , labels = this.model.labels
-        , el = this.$el;
-        fetchTemplate(this.model.formTemplate, function(tmpl) {
-            var fields = {};
+    , render: function(title, callBack) {
+        this.callBack = callBack;
+        var _this = this;
+        fetchTemplate(this.wndTemplate, function(tmpl) {
+            var modelData = _this.model.toJSON()
+            , labels = _this.model.labels
+            , fields = {};
             for(key in modelData) {
                 if(_.has(labels, key)) fields[key] = {data: modelData[key], label:labels[key]}
             }
-            var renderedForm = tmpl(fields);
-            el.append(renderedForm);
-            el.find("#modal-wnd").modal('show');
+            var renderedForm = tmpl({title: title, fields: fields});
+            _this.$el.append(renderedForm);
+            _this.$el.find("#modal-wnd").modal('show');
         });
 
     }
     , close: function() {
         this.$el.find("#modal-wnd").modal('hide');
         this.$el.find("#modal-wnd").remove();
-        return this;
     }
     , submit: function(e){
         e.preventDefault();
         $(".control-group").removeClass("error");
         $(".help-inline").html("");
         var model = this.model;
-        inputList = this.$el.find("#modal-wnd").find('input').each(function(i, el) {
-            // set is not working for new object
+        inputList = this.$el.find("#modal-body").find('input').each(function(i, el) {
+            // model.set is not working for new object ((
             model.attributes[$(el).attr('name')] = $(el).val();
         });
         var errors = this.model.validate();
         if(this.model.isValid()){
             this.model.save();
-            if(this.companies != null){
-                this.companies.fetch();
-            }
+            this.callBack(this.model);
             this.close();
         }else{
             for(key in errors){

@@ -1,7 +1,7 @@
 var Contact = Backbone.Model.extend({
-    idAttribute: "_id",
-    urlRoot: '/contacts',
-    validation: {
+    idAttribute: "_id"
+    , urlRoot: '/contact'
+    , validation: {
         name: {
             required: true
             , msg: "Name is required"

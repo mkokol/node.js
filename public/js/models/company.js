@@ -1,8 +1,7 @@
 var Company = Backbone.Model.extend({
-    formTemplate: "../tmpl/company-form.html",
-    idAttribute: "_id",
-    urlRoot: '/company',
-    validation: {
+    idAttribute: "_id"
+    , urlRoot: "/company"
+    , validation: {
         name: {
             required: true
             , msg: "Name is required"

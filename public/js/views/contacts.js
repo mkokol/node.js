@@ -1,28 +1,46 @@
 var ContactsView = Backbone.View.extend({
-    el: ".company-contacts-block",
-    tagName: 'tr',
-    companyId: null,
-	initialize: function() {
-        Backbone.Validation.bind(this);
-		// add crud listeners
-	},
-	render: function(callback) {
-        this.collection.forEach(this.addOne, this);
-	},
-    events: {
-        'click #create-new-contact-btn': 'showCreateContactModal'
-    },
-	addOne: function(contact) {
-        var _this = this,
-			contactView = new ContactView({
-				model: contact
-			});
+    el: ".company-contacts-block"
+    , tagName: "tr"
+    , companyId: null
+    , events: {
+        'click #create-new-contact-btn': "showCreateContactModal"
+    }
+    , initialize: function() {
+        //add listeners for crud
+        this.collection.on('change', this.render, this);
+    }
+    , render: function(callback) {
+        this.$el.find("#contacts-grid  tbody").empty();
+        if(this.collection.length == 0){
+            $("#contact-message").show();
+            $("#contacts-grid").hide();
+        }else{
+            this.collection.forEach(this.addOne, this);
+        }
+	}
+    , addOne: function(contact) {
+        var _this = this
+        , contactView = new ContactView({
+            model: contact
+        });
 		contactView.render(function(companyRendered){
-            console.log(_this.$el);
             _this.$el.find('#contacts-grid').append(companyRendered);
 		});
-	},
-    showCreateContactModal: function(){
-        console.log("123");
+	}
+    , showCreateContactModal: function(){
+        var _this = this
+        , contact = new Contact();
+        contact.attributes["company_id"] = this.companyId;
+        var modal = new ModalWindow({model: contact});
+        modal.render(
+            "Create contacts"
+            , function(model){delete modal; _this.updateCollection(model)}
+        );
+    }
+    , updateCollection: function(model){
+        $("#contact-message").hide();
+        $("#contacts-grid").show();
+        this.collection.add(model);
+        this.render();
     }
 });
