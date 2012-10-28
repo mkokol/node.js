@@ -15,9 +15,10 @@ block content
   body
     div.container
       h1 test Contact View
-      a#create-new-company-btn.btn.btn-small(type="button", data-toggle="modal")
-        i.icon-plus-sign
-        |Create New Company
+      div.content-right.add-company-place-holder
+        a#create-new-company-btn.btn.btn-small(type="button", data-toggle="modal")
+          i.icon-plus-sign
+          |Create New Company
 
       div#companies
         table.table.table-bordered.table-condensed

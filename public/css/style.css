@@ -9,12 +9,16 @@
 .pagination{height: 0;margin: 0;}
 .pagination ul > li > a{line-height: 23px;}
 
-
+/*
 #companies{width: 980px}
 #modal-wnd{width: 250px}
-
+*/
 
 form {margin: 0px;}
 .modal{width: 630px;}
 .modal label{width: 160px;}
 .modal label:after{ content: " : "}
+.company-contacts{padding: 7px;}
+.company-contacts .table {margin-bottom: 7px;}
+.add-company-place-holder{margin-bottom: 7px;}
+.content-right{text-align: right}

@@ -1,6 +1,6 @@
 var CompanyView = Backbone.View.extend({
 	tagName: 'tr',
-	template: '../../tmpl/company-row.html',
+    template: '../../tmpl/company-row.html',
 	formTemplate: '../tmpl/new-company-form.html',
 	editFormTemplate: '../tmpl/edit-company-form.html',
 	initialize: function() {
@@ -17,6 +17,7 @@ var CompanyView = Backbone.View.extend({
 				callback(_this.el);
 			}
 		});
+        $(this.el).attr('id', 'company-' + _this.model.get("_id"));
 	},
 	events: {
 		'click .contacts-company' : 'showContacts',
@@ -77,8 +78,12 @@ var CompanyView = Backbone.View.extend({
 	},
 	showContacts: function(){
         var contactsData = this.model.get('contacts');
-        var contacts = new Contacts(this.model.get('contacts'));
+        for(var key in contactsData){
+            contactsData[key].company_id = this.model.get("_id");
+        }
+        var contacts = new Contacts(contactsData);
 		var contactsView = new ContactsView({collection: contacts});
+        contactsView.companyId = this.model.get("_id");
 		contactsView.render();
 	},
     showValidationErrors: function(errors){
