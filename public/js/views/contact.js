@@ -22,7 +22,8 @@ var ContactView = Backbone.View.extend({
         var modal = new ModalWindow({model: this.model});
         modal.render(
             "Edit contacts"
-            , function(model){delete modal;})
+            , function(){delete modal;}
+        );
     }
     , removeContactModel: function(){
         this.model.destroy();

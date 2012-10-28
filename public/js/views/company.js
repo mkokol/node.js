@@ -32,22 +32,18 @@ var CompanyView = Backbone.View.extend({
         var modal = new ModalWindow({model: this.model});
         modal.render(
             "Edit company"
-            , function(model){delete modal;}
+            , function(){delete modal;}
         );
 	}
 	, showContacts: function(){
         $(".company-contacts-block").remove();
         var companyId = this.model.get("_id");
-        var contactsData = this.model.get('contacts');
         fetchTemplate(this.previewContactsBlockTemplate, function(tmpl) {
-            $("#company-" + companyId).after(tmpl(contactsData.length));
-            for(var key in contactsData){
-                contactsData[key].company_id = companyId;
-            }
-            var contacts = new Contacts(contactsData);
+            $("#company-" + companyId).after(tmpl());
+            var contacts = new Contacts();
             var contactsView = new ContactsView({collection: contacts});
             contactsView.companyId = companyId;
-            contactsView.render();
+            contacts.fetch(companyId);
         });
 	}
 });

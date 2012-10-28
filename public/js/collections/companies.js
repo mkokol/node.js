@@ -1,6 +1,6 @@
 var Companies = Backbone.Collection.extend({
 	model: Company
-	, url: '/company'
+    , url: '/company'
     , page: 1
     , totalPages: 0
     , fetch: function(page) {

@@ -7,16 +7,18 @@ var ContactsView = Backbone.View.extend({
     }
     , initialize: function() {
         //listeners for crud
-        this.collection.on('add', this.addOne, this);
         this.collection.on('remove', this.render, this);
         this.collection.on('change', this.render, this);
+        this.collection.on('reset', this.render, this);
     }
     , render: function(callback) {
         this.$el.find("#contacts-grid  tbody").empty();
         if(this.collection.length == 0){
-            $("#contact-message").show();
             $("#contacts-grid").hide();
+            $("#contact-message").show();
         }else{
+            $("#contact-message").hide();
+            $("#contacts-grid").show();
             this.collection.forEach(this.addOne, this);
         }
 	}
@@ -34,14 +36,11 @@ var ContactsView = Backbone.View.extend({
         , contact = new Contact();
         contact.attributes["company_id"] = this.companyId;
         var modal = new ModalWindow({model: contact});
-        modal.render(
-            "Create contacts"
-            , function(model){delete modal; _this.updateCollection(model)}
+        modal.render("Create contacts"
+            , function(){delete modal; _this.updateCollection()}
         );
     }
-    , updateCollection: function(model){
-        $("#contact-message").hide();
-        $("#contacts-grid").show();
-        this.collection.add(model);
+    , updateCollection: function(){
+        this.collection.fetch(this.companyId);
     }
 });

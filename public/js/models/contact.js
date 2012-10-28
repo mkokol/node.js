@@ -16,9 +16,9 @@ var Contact = Backbone.Model.extend({
         }
     }
     , labels: {
-        name: "Name"
-        , position: "Position"
-        , phone_number: "Phone number"
+        name: "Name*"
+        , position: "Position*"
+        , phone_number: "Phone number*"
     }
     , defaults: {
         name: ""

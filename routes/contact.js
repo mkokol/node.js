@@ -6,6 +6,31 @@
 var dbManager = require('../libs/db_manager');
 var responseHandler = require('../libs/response_handler');
 
+
+/**
+ * fetching json data of contact
+ *
+ * @param req
+ * @param res
+ */
+
+exports.get = function(req, res){
+    var companyId = req.param("companyId", "");
+    if(companyId != NaN){
+        var ObjectId = require('mongoose').Types.ObjectId;
+        dbManager.model.Company.findOne({_id: ObjectId(companyId)}, function(err, company){
+            if(err){
+                responseHandler.badRequest(res, "Error fetching company list");
+            }else{
+                res.send(company.contacts);
+            }
+        });
+    } else {
+        responseHandler.badRequest(res, "Incorrect type of the parameter \"companyId\"");
+    }
+};
+
+
 /**
  * add company's contact to mongoDb
  *
@@ -15,7 +40,8 @@ var responseHandler = require('../libs/response_handler');
 exports.post = function(req, res){
     var id = req.param("company_id", null);
     if(id != null){
-        dbManager.model.Company.findOne({_id: id}, function(err, company){
+        var ObjectId = require('mongoose').Types.ObjectId;
+        dbManager.model.Company.findOne({_id: ObjectId(id)}, function(err, company){
             company.contacts.push(
                 {
                     "name": req.param("name", null)
@@ -31,7 +57,7 @@ exports.post = function(req, res){
                         responseHandler.badRequest(res, "Error saving company");
                     }
                 }else{
-                    res.send({ company: companydData });
+                    res.send(companydData);
                 }
             });
         });
@@ -69,7 +95,7 @@ exports.put = function(req, res){
                         responseHandler.badRequest(res, "Error saving company");
                     }
                 }else{
-                    res.send({ company: companydData });
+                    res.send({});
                 }
             });
         } else {
@@ -97,7 +123,7 @@ exports.delete = function(req, res){
                         responseHandler.badRequest(res, "Error saving company");
                     }
                 }else{
-                    res.send({ company: companydData });
+                    res.send({});
                 }
             });
         } else {

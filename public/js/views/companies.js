@@ -64,7 +64,7 @@ var CompaniesView = Backbone.View.extend({
         , modal = new ModalWindow({model: company});
         modal.render(
             "Create company"
-            , function(model){delete modal; _this.updateCollection()}
+            , function(){delete modal; _this.updateCollection()}
         );
     }
     , updateCollection: function(){

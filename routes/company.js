@@ -56,7 +56,7 @@ exports.post = function(req, res){
                 responseHandler.badRequest(res, "Error saving company");
             }
         }else{
-            res.send({ company: companydData });
+            res.send(companydData);
         }
     });
 };
@@ -84,7 +84,7 @@ exports.put = function(req, res){
                     responseHandler.badRequest(res, "Error saving company");
                 }
             }else{
-                res.send({ company: companydData });
+                res.send(companydData);
             }
         });
     });

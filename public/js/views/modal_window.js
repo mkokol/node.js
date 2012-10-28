@@ -43,7 +43,7 @@ var ModalWindow = Backbone.View.extend({
         var errors = this.model.validate();
         if(this.model.isValid()){
             this.model.save();
-            this.callBack(this.model);
+            this.callBack();
             this.close();
         }else{
             for(key in errors){
