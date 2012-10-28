@@ -42,7 +42,7 @@ var ModalWindow = Backbone.View.extend({
         });
         var errors = this.model.validate();
         if(this.model.isValid()){
-            this.model.save();
+            this.model.save(this.model.toJSON());
             this.callBack();
             this.close();
         }else{
