@@ -3,7 +3,7 @@ module.exports = {
     , "db": {
         dev: {
             "host": "localhost"
-            , "name": "companies_contacts"
+            , "name": "companies_contacts_d"
         }
         , test: {
             "host": "localhost"
@@ -11,6 +11,6 @@ module.exports = {
         }
     }
     , "paging": {
-        "count" : 15
+        "count" : 5
     }
 }

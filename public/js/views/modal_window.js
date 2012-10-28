@@ -3,10 +3,10 @@ var ModalWindow = Backbone.View.extend({
     , wndTemplate: "../tmpl/add-edit-form.html"
     , callBack: null
     , events: {
-        "click .closeModal": "close"
+        "click .close-modal": "close"
         , "click .close": "close"
         , "click .modal-backdrop": "close"
-        , "click #save": "submit"
+        , "click .save-modal": "submit"
     }
     , initialize: function() {
         Backbone.Validation.bind(this);
@@ -25,9 +25,9 @@ var ModalWindow = Backbone.View.extend({
             _this.$el.append(renderedForm);
             _this.$el.find("#modal-wnd").modal('show');
         });
-
     }
     , close: function() {
+        this.undelegateEvents();
         this.$el.find("#modal-wnd").modal('hide');
         this.$el.find("#modal-wnd").remove();
     }

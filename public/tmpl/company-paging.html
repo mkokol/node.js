@@ -1,10 +1,33 @@
-<div class="pagination">
-    <ul>
-        <li><a href="#">Prev</a></li>
-        <li><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">Next</a></li>
-    </ul>
+<div id="pagination" class="content-center">
+    <div class="pagination">
+        <ul>
+            <% if(obj.page == 1){ %>
+                <li class="disabled"><span>First</span></li>
+            <% } else { %>
+                <li><a class="go-to-page" data-page="1" href="#">First</a></li>
+            <% } %>
+
+            <% if(obj.startPage > 1){ %>
+                <li class="disabled"><span>...</span></li>
+            <% } %>
+
+            <% for (var i = obj.startPage; i <= obj.lastPage; i++){ %>
+                <% if(i == obj.page){ %>
+                    <li class="disabled"><span><%= i %></span></li>
+                <% } else { %>
+                    <li><a class="go-to-page" data-page="<%= i %>" href="#"><%= i %></a></li>
+                <% } %>
+            <% } %>
+
+            <% if(obj.lastPage < obj.totalPages){ %>
+                <li class="disabled"><span>...</span></li>
+            <% } %>
+
+            <% if(obj.page == obj.totalPages){ %>
+                <li class="disabled"><span>First</span></li>
+            <% } else { %>
+                <li><a class="go-to-page" data-page="<%= obj.totalPages %>" href="#">Last</a></li>
+            <% } %>
+        </ul>
+    </div>
 </div>

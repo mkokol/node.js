@@ -6,7 +6,9 @@ var ContactsView = Backbone.View.extend({
         'click #create-new-contact-btn': "showCreateContactModal"
     }
     , initialize: function() {
-        //add listeners for crud
+        //listeners for crud
+        this.collection.on('add', this.addOne, this);
+        this.collection.on('remove', this.render, this);
         this.collection.on('change', this.render, this);
     }
     , render: function(callback) {
@@ -41,6 +43,5 @@ var ContactsView = Backbone.View.extend({
         $("#contact-message").hide();
         $("#contacts-grid").show();
         this.collection.add(model);
-        this.render();
     }
 });

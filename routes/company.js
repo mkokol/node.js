@@ -20,7 +20,12 @@ exports.get = function(req, res){
                 if(err){
                     responseHandler.badRequest(res, "Error fetching company list");
                 }else{
-                    res.send({ status: 'success', 'total': total, 'records': records });
+                    var totalPages = Math.ceil(total / dbManager.rowsPerPage);
+                    res.send({
+                        page: page
+                        , totalPages: totalPages
+                        , 'records': records
+                    });
                 }
             });
     } else {

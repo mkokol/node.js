@@ -17,7 +17,7 @@ var Company = Backbone.Model.extend({
             }
             ,{
                 pattern: "digits"
-                , msg: "Only digits is allowed"
+                , msg: "Only digits are allowed"
             }
         ]
         , city: {
@@ -31,7 +31,7 @@ var Company = Backbone.Model.extend({
             }
             ,{
                 pattern: "digits"
-                , msg: "Only digits is allowed"
+                , msg: "Only digits are allowed"
             }
         ]
     }

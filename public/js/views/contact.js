@@ -2,7 +2,6 @@ var ContactView = Backbone.View.extend({
 	tagName: 'tr'
 	, template: '../../tmpl/contact-row.html'
     , initialize: function() {
-        //add listeners for crud
         this.model.on('destroy', this.removeContactView, this);
         this.model.on('change', this.render, this);
     }

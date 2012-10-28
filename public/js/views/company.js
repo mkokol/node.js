@@ -1,10 +1,8 @@
 var CompanyView = Backbone.View.extend({
 	tagName: 'tr'
     , template: '../../tmpl/company-row.html'
-	, companyFormTemplate: '../tmpl/company-form.html'
     , previewContactsBlockTemplate: '../tmpl/contacts-preview-block.html'
 	, initialize: function() {
-		//add listeners for crud
 		this.model.on('destroy', this.removeCompanyView, this);
 		this.model.on('change', this.render, this);
 	}

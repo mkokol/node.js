@@ -1,9 +1,17 @@
 var Companies = Backbone.Collection.extend({
 	model: Company
 	, url: '/company'
-    , total: 0
+    , page: 1
+    , totalPages: 0
+    , fetch: function(page) {
+        Backbone.Collection.prototype.fetch.call(this, {
+            data: { page: page},
+            processData:true
+        });
+    }
     , parse: function(data) {
-        this.total = data.total;
+        this.page = data.page;
+        this.totalPages = data.totalPages;
         return data.records;
     }
 });
