@@ -1,11 +1,17 @@
 .hidden{display: none}
-.modal{width: 630px;}
-.modal label{width: 160px;}
+.modal{width: 630px}
+.modal label{width: 160px}
 .modal label:after{ content: " : ";}
-.company-contacts{padding: 7px;}
-.company-contacts .table {margin-bottom: 7px;}
-.add-company-place-holder{margin-bottom: 7px;}
-.content-right{text-align: right;}
-.content-center{text-align: center;}
+.company-contacts{padding: 7px}
+.company-contacts .table, .add-company-place-holder{margin-bottom: 7px}
+.content-right{text-align: right}
+.content-center{text-align: center}
 .company-option{width:110px}
 .contact-option{width:73px}
+.table thead tr th {
+	background-image: -webkit-linear-gradient(top, white, #E6E6E6);
+	background-image: -moz-linear-gradient(top, white, #E6E6E6);
+	background-image: -o-linear-gradient(top, white, #E6E6E6);
+	background-image: -ms-linear-gradient(top, white, #E6E6E6);
+	background-image: linear-gradient(top, white, #E6E6E6)
+}
