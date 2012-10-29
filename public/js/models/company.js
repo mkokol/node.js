@@ -27,12 +27,12 @@ var Company = Backbone.Model.extend({
         ]
         , city: {
             required: true
-            , msg: "Phone number is required"
+            , msg: "City is required"
         }
         , zip_code: [
             {
                 required: true
-                , msg: "Phone number is required"
+                , msg: "Zip code is required"
             }
             ,{
                 pattern: "digits"
