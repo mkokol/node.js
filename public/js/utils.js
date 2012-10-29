@@ -1,3 +1,11 @@
+/**
+ * fetching view templates with caching them
+ *
+ * @param path
+ * @param done
+ * @return {*}
+ */
+
 var fetchTemplate = function (path, done) {
     var JST = window.JST = window.JST || {};
     var def = new $.Deferred();

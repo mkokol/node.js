@@ -1,3 +1,9 @@
+/**
+ * building contacts grid and manage adding new contact
+ *
+ * @type {*}
+ */
+
 var ContactsView = Backbone.View.extend({
     el: ".company-contacts-block"
     , tagName: "tr"
@@ -6,7 +12,6 @@ var ContactsView = Backbone.View.extend({
         'click #create-new-contact-btn': "showCreateContactModal"
     }
     , initialize: function() {
-        //listeners for crud
         this.collection.on('remove', this.render, this);
         this.collection.on('change', this.render, this);
         this.collection.on('reset', this.render, this);

@@ -1,3 +1,9 @@
+/**
+ * contact collection with customising fetch
+ *
+ * @type {*}
+ */
+
 var Contacts = Backbone.Collection.extend({
 	model: Contact
     , url: '/contact'

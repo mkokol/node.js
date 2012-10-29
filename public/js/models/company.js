@@ -1,3 +1,8 @@
+/**
+ * company model with validation params and field labels for create and edit form
+ *
+ * @type {*}
+ */
 var Company = Backbone.Model.extend({
     idAttribute: "_id"
     , urlRoot: "/company"

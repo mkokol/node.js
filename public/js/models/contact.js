@@ -1,3 +1,9 @@
+/**
+ * contact model with validation params and field labels for create and edit form
+ *
+ * @type {*}
+ */
+
 var Contact = Backbone.Model.extend({
     idAttribute: "_id"
     , urlRoot: '/contact'

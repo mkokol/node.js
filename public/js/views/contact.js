@@ -1,3 +1,9 @@
+/**
+ * building contact record in grid and manage editing and deleting them
+ *
+ * @type {*}
+ */
+
 var ContactView = Backbone.View.extend({
 	tagName: 'tr'
 	, template: '../../tmpl/contact-row.html'

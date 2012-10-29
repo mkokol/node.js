@@ -1,3 +1,9 @@
+/**
+ * building companies grid and manage adding new company
+ *
+ * @type {*}
+ */
+
 var CompaniesView = Backbone.View.extend({
     el: '#companies'
     , pagePerSide: 2

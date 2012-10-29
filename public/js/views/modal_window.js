@@ -1,3 +1,9 @@
+/**
+ * building modal windows for creating and editing companies and their contacts
+ *
+ * @type {*}
+ */
+
 var ModalWindow = Backbone.View.extend({
     el: "body"
     , wndTemplate: "../tmpl/add-edit-form.html"

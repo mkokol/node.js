@@ -1,6 +1,12 @@
+/**
+ * building company record in grid and manage editing and deleting them
+ *
+ * @type {*}
+ */
+
 var CompanyView = Backbone.View.extend({
 	tagName: 'tr'
-    , template: '../../tmpl/company-row.html'
+    , rowTemplate: '../../tmpl/company-row.html'
     , previewContactsBlockTemplate: '../tmpl/contacts-preview-block.html'
 	, initialize: function() {
 		this.model.on('destroy', this.removeCompanyView, this);
@@ -8,8 +14,8 @@ var CompanyView = Backbone.View.extend({
 	}
 	, render: function(callback) {
 		var _this = this;
-		fetchTemplate(_this.template, function(tmpl) {
-			_this.$el.html( tmpl(_this.model.toJSON() ));
+        fetchTemplate(_this.rowTemplate, function(tmpl) {
+			_this.$el.html( tmpl(_this.model.toJSON()));
 			if(_.isFunction(callback)) {
 				callback(_this.el);
 			}

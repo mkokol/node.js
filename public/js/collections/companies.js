@@ -1,3 +1,9 @@
+/**
+ * companies collection with customising fetch
+ *
+ * @type {*}
+ */
+
 var Companies = Backbone.Collection.extend({
 	model: Company
     , url: '/company'

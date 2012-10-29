@@ -3,7 +3,7 @@ module.exports = {
     , "db": {
         dev: {
             "host": "localhost"
-            , "name": "companies_contacts_d"
+            , "name": "companies_contacts"
         }
         , test: {
             "host": "localhost"
