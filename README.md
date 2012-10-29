@@ -1,7 +1,7 @@
 node.js test task
 =================
 
-App provides you to manage companies and their contacts
+App provides you ability to manage companies and their contacts.
 
 
 Run
