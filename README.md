@@ -10,7 +10,7 @@ Run
 For running project you should have installed:
 
 1. Node.js platform.
-2. For loading all packages run "npm install" in the root directory of project.
+2. For loading all required packages run "npm install" in the root directory of project.
 3. mongoDB (connection configuration is in config.js in root dir).
 
 
