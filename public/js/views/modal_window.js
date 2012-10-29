@@ -18,8 +18,8 @@ var ModalWindow = Backbone.View.extend({
             var modelData = _this.model.toJSON()
             , labels = _this.model.labels
             , fields = {};
-            for(key in modelData) {
-                if(_.has(labels, key)) fields[key] = {data: modelData[key], label:labels[key]}
+            for(key in labels) {
+                fields[key] = {data: modelData[key], label:labels[key]}
             }
             var renderedForm = tmpl({title: title, fields: fields});
             _this.$el.append(renderedForm);
